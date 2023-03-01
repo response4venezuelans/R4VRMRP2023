@@ -11,46 +11,8 @@ r4v_error_report <- function(data,countryname = NULL,
   # SHINY Creating a list which will return all the dataframes
   return_data <- list()
   
-  
-library(tidyverse)
-library(readxl)
-library(dplyr)
-library(writexl)
 
 ### This script must be executed only after doing the read data script
-
-### Double check colnames
-  
-  colnames(df5W) <- c("Country",
-                      "Admin1",
-                      "Admin2",
-                      "Appealing_org",
-                      "Implementation",
-                      "Implementing_partner",
-                      "Month",
-                      "Subsector",
-                      "Indicator",
-                      "Activity_Name",
-                      "Activity_Description",
-                      "RMRPActivity",
-                      "COVID19",
-                      "CVA",
-                      "Value",
-                      "Delivery_mechanism",
-                      "Quantity_output",
-                      "Total_monthly",
-                      "New_beneficiaries",
-                      "IN_DESTINATION",
-                      "IN_TRANSIT",
-                      "Host_Communities",
-                      "PENDULARS",
-                      "Returnees",
-                      "Girls",
-                      "Boys",
-                      "Women",
-                      "Men",
-                      "Other_under",
-                      "Other_above")
 
 ### Filter the country if needed
 
@@ -73,8 +35,7 @@ if (is.null(countryname) || (countryname=="All")) {
 # Data wrangling of reference table for quality check
 # Vectors for verification
   
-  AOlist <- unique(as.vector(dfAO["Name"]))
-  IPlist <- unique(as.vector(dfIP["Name"]))
+  partnerlist <- unique(as.vector(dfpartner["Name"]))
   countrylist <- unique(as.vector(dfadmin1["countryadmin1"]))
   admin2list <- unique(as.vector(dfadmin2["admin1and2"]))
   sectindiclist <-  as.vector(dfindicator["sectindic"])
@@ -88,9 +49,9 @@ if (is.null(countryname) || (countryname=="All")) {
            countryadmincheck = ifelse(!any(countryadmin1 == countrylist), "Review", ""),
            admin1and2check = ifelse(!is.na(Admin2) & !any(Admin1and2 == admin2list), "Review", ""),
     # Who: Missing values and Org names that are not part of the list
-      miss_appeal_org = ifelse(!is.na(Appealing_org) & any(Appealing_org == AOlist), "", "Review"),
+      miss_appeal_org = ifelse(!is.na(Appealing_org) & any(Appealing_org == partnerlist), "", "Review"),
       miss_setup = ifelse(is.na(Implementation), "Review", ""),
-      miss_implementing_org = ifelse((Implementation == "Yes" & (is.na(Implementing_partner) | !any(Implementing_partner == IPlist))) | 
+      miss_implementing_org = ifelse((Implementation == "Yes" & (is.na(Implementing_partner) | !any(Implementing_partner == partnerlist))) | 
                                        (Implementation == "No" & !is.na(Implementing_partner)), "Review", ""),
     # When: Missing month
     miss_month = ifelse(is.na(Month), "Review", ""),
@@ -104,14 +65,14 @@ if (is.null(countryname) || (countryname=="All")) {
     MultipurposeSector = ifelse(Subsector == "Multipurpose Cash Assistance (MPC)" & CVA == "No", "Review", ""),
     # Output and Breakdown related mistakes. Reviews will be divided according to indicator types
     # PNiN indicator related mistakes
-    PiNNoBenef = ifelse(Indicatortype == 'PiN' & ((is.na(New_beneficiaries) | New_beneficiaries == 0) & (is.na(Total_monthly) | Total_monthly == 0)), "Review", ""),
-    NewBenefvstotal = ifelse(Indicatortype == 'PiN' & New_beneficiaries > Total_monthly, "Review", ""),
-    PopTypeBreakdown = ifelse(Indicatortype == 'PiN' & New_beneficiaries != sum(IN_DESTINATION,
+    DirectAssistanceNoBenef = ifelse(Indicatortype == 'Direct Assistance' & ((is.na(New_beneficiaries) | New_beneficiaries == 0) & (is.na(Total_monthly) | Total_monthly == 0)), "Review", ""),
+    NewBenefvstotal = ifelse(Indicatortype == 'Direct Assistance' & New_beneficiaries > Total_monthly, "Review", ""),
+    PopTypeBreakdown = ifelse(Indicatortype == 'Direct Assistance' & New_beneficiaries != sum(IN_DESTINATION,
                                                                                  IN_TRANSIT,
                                                                                  Host_Communities,
                                                                                  PENDULARS,
                                                                                  Returnees, na.rm = TRUE), "Review", ""),
-    AGDBreakdown = ifelse(Indicatortype == 'PiN' & New_beneficiaries != sum(Girls,
+    AGDBreakdown = ifelse(Indicatortype == 'Direct Assistance' & New_beneficiaries != sum(Girls,
                                                                               Boys,
                                                                               Women,
                                                                               Men,
@@ -120,7 +81,7 @@ if (is.null(countryname) || (countryname=="All")) {
     # Capacity Building indicators
     CBuildingNoBenef = ifelse(Indicatortype == 'Capacity Building' & (Total_monthly == 0 | is.na(Total_monthly)), "Review", ""),
     # Todos los otros indicadores
-    NoOutput = ifelse ((Indicatortype != 'Capacity Building' & Indicatortype != 'PiN') & (Quantity_output == 0 | is.na(Quantity_output)), "Review", ""),
+    NoOutput = ifelse ((Indicatortype != 'Capacity Building' & Indicatortype != 'Direct Assistance') & (Quantity_output == 0 | is.na(Quantity_output)), "Review", ""),
     Review = NA)%>%
     ungroup()%>%
     select(-countryadmin1, -Admin1and2, -sectorindicator, -Indicatortype)
@@ -182,7 +143,7 @@ if (is.null(countryname) || (countryname=="All")) {
           missingmechanism,
           CVANotoYes,           
            MultipurposeSector,
-           PiNNoBenef,
+           DirectAssistanceNoBenef,
            NewBenefvstotal,
            PopTypeBreakdown,
            AGDBreakdown,
@@ -214,7 +175,7 @@ if (is.null(countryname) || (countryname=="All")) {
  return(return_data)
  
   ## remove objects end of script##
-  rm(AOlist, IPlist, countrylist, admin2list, df5Werror, sectindiclist,df5Werror1 ,df5Werror2)
+  rm(partnerlist, countrylist, admin2list, df5Werror, sectindiclist,df5Werror1 ,df5Werror2)
 
 
 } 
