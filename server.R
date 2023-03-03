@@ -19,7 +19,7 @@ shinyServer(function(input, output, session) {
   output$data <- renderPrint({
     source("R/1_1_read_data_local.R")
     
-    Data(read_data_2022_local(imported$data()))
+    Data(read_data_2023_local(imported$data()))
     showNotification("Data Processing Complete",duration = 10, type = "error")
     
     updateSelectInput(session,"country_name",choices = unique(Data()$Country))
@@ -43,7 +43,7 @@ shinyServer(function(input, output, session) {
   
   observeEvent(input$Run_Script,{
     source("R/1_read_data.R")
-    Data(read_data_2022())
+    Data(read_data_2023())
     showNotification("Data Processing Complete",duration = 10, type = "error")
     updateSelectInput(session,"country_name",choices = c("All",unique(Data()$Country)))
     updateSelectInput(session,"country_name_agg",choices = c("All",unique(Data()$Country)))

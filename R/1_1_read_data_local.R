@@ -1,7 +1,7 @@
 # Read data 2022
 # function
 
-read_data_2022_local <- function(data)
+read_data_2023_local <- function(data)
 { 
   # Credentials located in seperate file
   source("R/ai_credentials.R")
@@ -96,7 +96,7 @@ read_data_2022_local <- function(data)
                               "IndicatorType" = "cuskmf7lctcszoga", truncate.strings = FALSE)%>%
     rowwise()%>%
     mutate(sectindic = paste(Subsector, Indicator))%>%
-    ungroup
+    ungroup()
 
   
 dfpartner <- queryTable("cvbei1nlct8v92h2s31",

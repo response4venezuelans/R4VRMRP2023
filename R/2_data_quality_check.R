@@ -29,7 +29,7 @@ if (is.null(countryname) || (countryname=="All")) {
            Admin1and2 = paste(Admin1, Admin2),
            sectorindicator = paste(Subsector, Indicator))%>%
     left_join(dfindicator, by = c("Subsector", "Indicator"))%>%
-    select(-Code, -sectindic)
+    select(-CODE, -sectindic)
     
   
 # Data wrangling of reference table for quality check
@@ -65,26 +65,26 @@ if (is.null(countryname) || (countryname=="All")) {
     MultipurposeSector = ifelse(Subsector == "Multipurpose Cash Assistance (MPC)" & CVA == "No", "Review", ""),
     # Output and Breakdown related mistakes. Reviews will be divided according to indicator types
     # PNiN indicator related mistakes
-    DirectAssistanceNoBenef = ifelse(Indicatortype == 'Direct Assistance' & ((is.na(New_beneficiaries) | New_beneficiaries == 0) & (is.na(Total_monthly) | Total_monthly == 0)), "Review", ""),
-    NewBenefvstotal = ifelse(Indicatortype == 'Direct Assistance' & New_beneficiaries > Total_monthly, "Review", ""),
-    PopTypeBreakdown = ifelse(Indicatortype == 'Direct Assistance' & New_beneficiaries != sum(IN_DESTINATION,
+    DirectAssistanceNoBenef = ifelse(IndicatorType == 'Direct Assistance' & ((is.na(New_beneficiaries) | New_beneficiaries == 0) & (is.na(Total_monthly) | Total_monthly == 0)), "Review", ""),
+    NewBenefvstotal = ifelse(IndicatorType == 'Direct Assistance' & New_beneficiaries > Total_monthly, "Review", ""),
+    PopTypeBreakdown = ifelse(IndicatorType == 'Direct Assistance' & New_beneficiaries != sum(IN_DESTINATION,
                                                                                  IN_TRANSIT,
                                                                                  Host_Communities,
                                                                                  PENDULARS,
                                                                                  Returnees, na.rm = TRUE), "Review", ""),
-    AGDBreakdown = ifelse(Indicatortype == 'Direct Assistance' & New_beneficiaries != sum(Girls,
+    AGDBreakdown = ifelse(IndicatorType == 'Direct Assistance' & New_beneficiaries != sum(Girls,
                                                                               Boys,
                                                                               Women,
                                                                               Men,
                                                                             Other_under,
                                                                               Other_above, na.rm = TRUE), "Review", ""),
     # Capacity Building indicators
-    CBuildingNoBenef = ifelse(Indicatortype == 'Capacity Building' & (Total_monthly == 0 | is.na(Total_monthly)), "Review", ""),
+    CBuildingNoBenef = ifelse(IndicatorType == 'Capacity Building' & (Total_monthly == 0 | is.na(Total_monthly)), "Review", ""),
     # Todos los otros indicadores
-    NoOutput = ifelse ((Indicatortype != 'Capacity Building' & Indicatortype != 'Direct Assistance') & (Quantity_output == 0 | is.na(Quantity_output)), "Review", ""),
+    NoOutput = ifelse ((IndicatorType != 'Capacity Building' & IndicatorType != 'Direct Assistance') & (Quantity_output == 0 | is.na(Quantity_output)), "Review", ""),
     Review = NA)%>%
     ungroup()%>%
-    select(-countryadmin1, -Admin1and2, -sectorindicator, -Indicatortype)
+    select(-countryadmin1, -Admin1and2, -sectorindicator, -IndicatorType)
   # Count errors and classify
   
   df5Werror$Review[apply(df5Werror, 1, function(r) any(r %in% c("Review"))) == TRUE] <- "Please review activity"
@@ -109,7 +109,6 @@ if (is.null(countryname) || (countryname=="All")) {
            Activity_Name,
            Activity_Description,
            RMRPActivity,
-           COVID19,
            CVA,
            Value,
            Delivery_mechanism,
