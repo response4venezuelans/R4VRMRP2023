@@ -7,7 +7,7 @@ read_data_2023_local <- function(data)
   source("R/ai_credentials.R")
   
   # Get data 
-  
+
   df5W <- data 
   
   # format column names for easier data processing
@@ -63,9 +63,6 @@ read_data_2023_local <- function(data)
     arrange(Country, Month)%>%
     na_if("")
 
-  # Write the 5W as a xlsx file in repository
-    write_xlsx(df5W, "./data/Activities_5W_2023.xlsx")
-    
   # Get other reference table used during the data quality check
   # Loaded from AI regardless the method for 5W used
   
