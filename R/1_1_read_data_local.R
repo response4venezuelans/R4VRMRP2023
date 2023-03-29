@@ -75,7 +75,7 @@ read_data_2023_local <- function(data)
     ungroup()
  
   
-  dfadmin2 <- queryTable("cxl7zn3lct8v92h2s32",
+  dfadmin2 <<- queryTable("cxl7zn3lct8v92h2s32",
                    "Country" = "cnkb6jykxgdeemm4r.c8u26b8kxeqpy0k4",
                    "Admin1" = "cnkb6jykxgdeemm4r.c3ns3zikxeqq4h95",
                    "Admin2" = "cs2esadkx6hkt7j6", truncate.strings = FALSE)%>%
@@ -96,7 +96,7 @@ read_data_2023_local <- function(data)
     ungroup()
 
   
-dfpartner <- queryTable("cvbei1nlct8v92h2s31",
+dfpartner <<- queryTable("cvbei1nlct8v92h2s31",
                  "AOIDORG" = "cnhvpo4kumvyqla8",
                  "Name" = "ckj5zamkumvyysv9",
                  "Type" = "c813krekumw0449j",
