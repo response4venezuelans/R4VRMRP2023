@@ -1,2 +1,2 @@
 # AI Login
-activityinfo::activityInfoLogin("fayolle@unhcr.org", "126c199a4206a96f62a3d4f88e996c33")
+activityinfo::activityInfoLogin("chaconma@unhcr.org", "64955ccc1886513f7ea530fe5540f391")
