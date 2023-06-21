@@ -38,7 +38,7 @@ source("R/ai_credentials.R")
                         "Women above 18" = "c3l36n2kx6l70kp4u",
                         "Men above 18" = "ctd27ackx6l7g814v",
                         "Other under 18" = "ckjcuiokx6l9a504w",
-                        "Other above 18" = "cq4hs3skx6lggpj4x", truncate.strings = FALSE)
+                        "Other above 18" = "cq4hs3skx6lggpj4x", truncateStrings = FALSE)
 
  # format column names for easier data processing
   
@@ -99,7 +99,7 @@ source("R/ai_credentials.R")
   dfadmin1  <<- queryTable("ctfe4etlct8v92h2s2z",
                            "Country" = "c8u26b8kxeqpy0k4",
                            "Admin1" = "c3ns3zikxeqq4h95",
-                           "ISOCode" = "cl3sspjkxeqq8yq6",truncate.strings = FALSE)%>%
+                           "ISOCode" = "cl3sspjkxeqq8yq6",truncateStrings = FALSE)%>%
     rowwise()%>%
     mutate(countryadmin1 = paste(Country, Admin1))%>%
     ungroup()
@@ -108,7 +108,7 @@ source("R/ai_credentials.R")
   dfadmin2 <<- queryTable("cxl7zn3lct8v92h2s32",
                          "Country" = "cnkb6jykxgdeemm4r.c8u26b8kxeqpy0k4",
                          "Admin1" = "cnkb6jykxgdeemm4r.c3ns3zikxeqq4h95",
-                         "Admin2" = "cs2esadkx6hkt7j6", truncate.strings = FALSE)%>%
+                         "Admin2" = "cs2esadkx6hkt7j6", truncateStrings = FALSE)%>%
     rowwise()%>%
     mutate(admin1and2 = paste(Admin1, Admin2))%>%
     ungroup()
@@ -120,7 +120,7 @@ source("R/ai_credentials.R")
                               "CODE" = "cdhugiblctco28h3",
                               "Subsector" = "cagw22hlctcp2vu5",
                               "Indicator" = "c1oo0eclctcqtjp8",
-                              "IndicatorType" = "cuskmf7lctcszoga", truncate.strings = FALSE)%>%
+                              "IndicatorType" = "cuskmf7lctcszoga", truncateStrings = FALSE)%>%
     rowwise()%>%
     mutate(sectindic = paste(Subsector, Indicator))%>%
     ungroup
@@ -130,7 +130,7 @@ source("R/ai_credentials.R")
                           "AOIDORG" = "cnhvpo4kumvyqla8",
                           "Name" = "ckj5zamkumvyysv9",
                           "Type" = "c813krekumw0449j",
-                          "RMlead" = "cu2zbr0l1z3adte7", truncate.strings = FALSE)
+                          "RMlead" = "cu2zbr0l1z3adte7", truncateStrings = FALSE)
   
  return(df5W)
   
