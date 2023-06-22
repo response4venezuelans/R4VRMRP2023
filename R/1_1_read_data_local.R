@@ -69,7 +69,7 @@ read_data_2023_local <- function(data)
   dfadmin1  <<- queryTable("ctfe4etlct8v92h2s2z",
                            "Country" = "c8u26b8kxeqpy0k4",
                            "Admin1" = "c3ns3zikxeqq4h95",
-                           "ISOCode" = "cl3sspjkxeqq8yq6",truncate.strings = FALSE)%>%
+                           "ISOCode" = "cl3sspjkxeqq8yq6",truncateStrings = FALSE)%>%
     rowwise()%>%
     mutate(countryadmin1 = paste(Country, Admin1))%>%
     ungroup()
@@ -78,7 +78,7 @@ read_data_2023_local <- function(data)
   dfadmin2 <<- queryTable("cxl7zn3lct8v92h2s32",
                    "Country" = "cnkb6jykxgdeemm4r.c8u26b8kxeqpy0k4",
                    "Admin1" = "cnkb6jykxgdeemm4r.c3ns3zikxeqq4h95",
-                   "Admin2" = "cs2esadkx6hkt7j6", truncate.strings = FALSE)%>%
+                   "Admin2" = "cs2esadkx6hkt7j6", truncateStrings = FALSE)%>%
     rowwise()%>%
     mutate(admin1and2 = paste(Admin1, Admin2))%>%
     ungroup()
@@ -90,7 +90,7 @@ read_data_2023_local <- function(data)
                               "CODE" = "cdhugiblctco28h3",
                               "Subsector" = "cagw22hlctcp2vu5",
                               "Indicator" = "c1oo0eclctcqtjp8",
-                              "IndicatorType" = "cuskmf7lctcszoga", truncate.strings = FALSE)%>%
+                              "IndicatorType" = "cuskmf7lctcszoga", truncateStrings = FALSE)%>%
     rowwise()%>%
     mutate(sectindic = paste(Subsector, Indicator))%>%
     ungroup()
@@ -100,7 +100,7 @@ dfpartner <<- queryTable("cvbei1nlct8v92h2s31",
                  "AOIDORG" = "cnhvpo4kumvyqla8",
                  "Name" = "ckj5zamkumvyysv9",
                  "Type" = "c813krekumw0449j",
-                 "RMlead" = "cu2zbr0l1z3adte7", truncate.strings = FALSE)
+                 "RMlead" = "cu2zbr0l1z3adte7", truncateStrings = FALSE)
 
   
   return(df5W)

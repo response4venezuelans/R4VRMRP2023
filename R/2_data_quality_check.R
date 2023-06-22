@@ -46,18 +46,18 @@ if (is.null(countryname) || (countryname=="All")) {
     rowwise()%>%
     # Where: check missing mandatory fields, Country-Admin1 pairs and Admin1-Admin2 pairs
     mutate(missingcountry = ifelse(is.na(Country) | is.na(Admin1), "Review", ""),
-           countryadmincheck = ifelse(!any(countryadmin1 == countrylist), "Review", ""),
-           admin1and2check = ifelse(!is.na(Admin2) & !any(Admin1and2 == admin2list), "Review", ""),
+           countryadmincheck = ifelse(!any(countryadmin1 == countrylist[[1]]), "Review", ""),
+           admin1and2check = ifelse(!is.na(Admin2) & !any(Admin1and2 == admin2list[[1]]), "Review", ""),
     # Who: Missing values and Org names that are not part of the list
-      miss_appeal_org = ifelse(!is.na(Appealing_org) & any(Appealing_org == partnerlist), "", "Review"),
+      miss_appeal_org = ifelse(!is.na(Appealing_org) & any(Appealing_org == partnerlist[[1]]), "", "Review"),
       miss_setup = ifelse(is.na(Implementation), "Review", ""),
-      miss_implementing_org = ifelse((Implementation == "Yes" & (is.na(Implementing_partner) | !any(Implementing_partner == partnerlist))) | 
+      miss_implementing_org = ifelse((Implementation == "Yes" & (is.na(Implementing_partner) | !any(Implementing_partner == partnerlist[[1]]))) | 
                                        (Implementation == "No" & !is.na(Implementing_partner)), "Review", ""),
     # When: Missing month
     miss_month = ifelse(is.na(Month), "Review", ""),
     # What: missing values and inconsistencies in CVA
     missing_what = ifelse(is.na(Subsector)|is.na(Indicator)|is.na(Activity_Name)| is.na(RMRPActivity)|is.na(CVA), "Review", ""),
-    wrongsectindicator = ifelse(!any(sectorindicator == sectindiclist), "Review", ""),
+    wrongsectindicator = ifelse(!any(sectorindicator == sectindiclist[[1]]), "Review", ""),
     # CVA mistakes
     zeroCVA = ifelse(CVA == "Yes" & (is.na(Value)|  Value == 0), "Review", ""),
     missingmechanism = ifelse(CVA == "Yes" & is.na(Delivery_mechanism), "Review", ""),

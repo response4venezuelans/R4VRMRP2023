@@ -30,7 +30,7 @@ if (is.null(countryname) || (countryname=="All")) {
 }
  
 # Create a vector based on Activity's months to the filter the template
-  monthlist <- unique(as.vector(df5Wconsolidated["Month"]))
+  monthlist <- as_tibble(unique(df5Wconsolidated["Month"]))
   
 # Get consolidated template file
 
