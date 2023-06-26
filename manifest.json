@@ -6147,8 +6147,8 @@
         "Package": "terra",
         "Type": "Package",
         "Title": "Spatial Data Analysis",
-        "Version": "1.7-37",
-        "Date": "2023-06-18",
+        "Version": "1.7-39",
+        "Date": "2023-06-22",
         "Depends": "R (>= 3.5.0)",
         "Suggests": "parallel, tinytest, ncdf4, sf (>= 0.9-8), deldir, XML,\nleaflet, htmlwidgets",
         "LinkingTo": "Rcpp",
@@ -6164,11 +6164,11 @@
         "LazyLoad": "yes",
         "Authors@R": "c(\n\tperson(\"Robert J.\", \"Hijmans\", role = c(\"cre\", \"aut\"),  \n\t\t\temail = \"r.hijmans@gmail.com\", comment = c(ORCID = \"0000-0001-5872-2872\")),\n    person(\"Roger\", \"Bivand\",  role = \"ctb\", comment = c(ORCID = \"0000-0003-2392-6140\")),\n    person(\"Edzer\", \"Pebesma\", role = \"ctb\", comment = c(ORCID = \"0000-0001-8049-7069\")),\n    person(\"Michael D.\", \"Sumner\", role = \"ctb\"))",
         "NeedsCompilation": "yes",
-        "Packaged": "2023-06-18 17:11:23 UTC; rhijm",
+        "Packaged": "2023-06-23 07:32:27 UTC; rhijm",
         "Author": "Robert J. Hijmans [cre, aut] (<https://orcid.org/0000-0001-5872-2872>),\n  Roger Bivand [ctb] (<https://orcid.org/0000-0003-2392-6140>),\n  Edzer Pebesma [ctb] (<https://orcid.org/0000-0001-8049-7069>),\n  Michael D. Sumner [ctb]",
         "Repository": "CRAN",
-        "Date/Publication": "2023-06-18 22:50:03 UTC",
-        "Built": "R 4.3.1; x86_64-w64-mingw32; 2023-06-19 23:50:50 UTC; windows",
+        "Date/Publication": "2023-06-23 10:20:02 UTC",
+        "Built": "R 4.3.0; x86_64-w64-mingw32; 2023-06-23 13:41:47 UTC; windows",
         "Archs": "x64"
       }
     },
@@ -6491,24 +6491,24 @@
         "Type": "Package",
         "Package": "tufte",
         "Title": "Tufte's Styles for R Markdown Documents",
-        "Version": "0.12",
-        "Authors@R": "c(\n    person(\"Yihui\", \"Xie\", role = c(\"aut\"), email = \"xie@yihui.name\", comment = c(ORCID = \"0000-0003-0645-5666\")),\n    person(\"Christophe\", \"Dervieux\", role = c(\"ctb\", \"cre\"), email = \"cderv@rstudio.com\", comment = c(ORCID = \"0000-0003-4474-2498\")),\n    person(\"JJ\", \"Allaire\", role = \"aut\"),\n    person(\"Andrzej\", \"Oles\", role = \"ctb\"),\n    person(\"Dave\", \"Liepmann\", role = \"ctb\", comment = \"Tufte CSS in inst/rmarkdown/templates/tufte_html/resources\"),\n    person(family = \"RStudio, PBC\", role = \"cph\")\n    )",
+        "Version": "0.13",
+        "Authors@R": "c(\n    person(\"Yihui\", \"Xie\", role = \"aut\", email = \"xie@yihui.name\", comment = c(ORCID = \"0000-0003-0645-5666\")),\n    person(\"Christophe\", \"Dervieux\", role = c(\"ctb\", \"cre\"), email = \"cderv@posit.co\", comment = c(ORCID = \"0000-0003-4474-2498\")),\n    person(\"JJ\", \"Allaire\", role = \"aut\"),\n    person(\"Andrzej\", \"Oles\", role = \"ctb\"),\n    person(\"Dave\", \"Liepmann\", role = \"ctb\", comment = \"Tufte CSS in inst/rmarkdown/templates/tufte_html/resources\"),\n    person(given = \"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
         "Description": "Provides R Markdown output formats to use Tufte styles for\n    PDF and HTML output.",
         "License": "GPL-3",
         "URL": "https://github.com/rstudio/tufte",
         "BugReports": "https://github.com/rstudio/tufte/issues",
         "Imports": "htmltools, knitr (>= 1.28), rmarkdown (>= 2.11), xfun (>=\n0.13)",
-        "Suggests": "testthat (>= 3.1.0), withr (>= 2.3.0)",
+        "Suggests": "covr, testthat (>= 3.1.0), withr (>= 2.3.0)",
         "Config/testthat/edition": "3",
         "Encoding": "UTF-8",
-        "RoxygenNote": "7.1.2",
+        "RoxygenNote": "7.2.3",
         "NeedsCompilation": "no",
-        "Packaged": "2022-01-27 16:20:47 UTC; cderv",
-        "Author": "Yihui Xie [aut] (<https://orcid.org/0000-0003-0645-5666>),\n  Christophe Dervieux [ctb, cre]\n    (<https://orcid.org/0000-0003-4474-2498>),\n  JJ Allaire [aut],\n  Andrzej Oles [ctb],\n  Dave Liepmann [ctb] (Tufte CSS in\n    inst/rmarkdown/templates/tufte_html/resources),\n  RStudio, PBC [cph]",
-        "Maintainer": "Christophe Dervieux <cderv@rstudio.com>",
+        "Packaged": "2023-06-22 15:15:18 UTC; chris",
+        "Author": "Yihui Xie [aut] (<https://orcid.org/0000-0003-0645-5666>),\n  Christophe Dervieux [ctb, cre]\n    (<https://orcid.org/0000-0003-4474-2498>),\n  JJ Allaire [aut],\n  Andrzej Oles [ctb],\n  Dave Liepmann [ctb] (Tufte CSS in\n    inst/rmarkdown/templates/tufte_html/resources),\n  Posit Software, PBC [cph, fnd]",
+        "Maintainer": "Christophe Dervieux <cderv@posit.co>",
         "Repository": "CRAN",
-        "Date/Publication": "2022-01-27 23:30:01 UTC",
-        "Built": "R 4.1.2; ; 2022-03-01 01:39:06 UTC; windows"
+        "Date/Publication": "2023-06-22 16:50:02 UTC",
+        "Built": "R 4.3.0; ; 2023-06-23 13:54:13 UTC; windows"
       }
     },
     "tweenr": {
@@ -6823,7 +6823,7 @@
       "description": {
         "Package": "usethis",
         "Title": "Automate Package and Project Setup",
-        "Version": "2.2.0",
+        "Version": "2.2.1",
         "Authors@R": "c(\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\",\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-6983-2759\")),\n    person(\"Malcolm\", \"Barrett\", , \"malcolmbarrett@gmail.com\", role = \"aut\",\n           comment = c(ORCID = \"0000-0003-0299-5825\")),\n    person(\"Andy\", \"Teucher\", , \"andy.teucher@posit.co\", role = \"aut\",\n           comment = c(ORCID = \"0000-0002-7840-692X\")),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
         "Description": "Automate package and project setup tasks that are otherwise\n    performed manually. This includes setting up unit testing, test\n    coverage, continuous integration, Git, 'GitHub', licenses, 'Rcpp',\n    'RStudio' projects, and more.",
         "License": "MIT + file LICENSE",
@@ -6838,12 +6838,12 @@
         "Language": "en-US",
         "RoxygenNote": "7.2.3",
         "NeedsCompilation": "no",
-        "Packaged": "2023-06-06 03:32:51 UTC; jenny",
+        "Packaged": "2023-06-23 22:59:53 UTC; jenny",
         "Author": "Hadley Wickham [aut] (<https://orcid.org/0000-0003-4757-117X>),\n  Jennifer Bryan [aut, cre] (<https://orcid.org/0000-0002-6983-2759>),\n  Malcolm Barrett [aut] (<https://orcid.org/0000-0003-0299-5825>),\n  Andy Teucher [aut] (<https://orcid.org/0000-0002-7840-692X>),\n  Posit Software, PBC [cph, fnd]",
         "Maintainer": "Jennifer Bryan <jenny@posit.co>",
         "Repository": "CRAN",
-        "Date/Publication": "2023-06-06 09:30:02 UTC",
-        "Built": "R 4.3.0; ; 2023-06-07 14:10:41 UTC; windows"
+        "Date/Publication": "2023-06-23 23:50:02 UTC",
+        "Built": "R 4.3.0; ; 2023-06-24 16:49:43 UTC; windows"
       }
     },
     "utf8": {
@@ -7441,19 +7441,16 @@
       "checksum": "d9a74123554b044423c87a832da2a3b2"
     },
     "R/1_1_read_data_local.R": {
-      "checksum": "563a0b8236fc6822c0ae448bacdaa74c"
+      "checksum": "29352eb03e140e21c95f403d3e893fe9"
     },
     "R/1_read_data.R": {
-      "checksum": "959b6791d29fe724ba02dce6faae8bfa"
+      "checksum": "9e5061893c5e1f188b1e8be64150f784"
     },
     "R/2_data_quality_check.R": {
       "checksum": "0dfa17a2b4e6c491f1428ef9e1cbdc3b"
     },
     "R/3_consolidated_report.R": {
       "checksum": "6165dee819f73f17befb4e8bee623d44"
-    },
-    "R/ai_credentials.R": {
-      "checksum": "f74090b494f01c7198d4a1f91b0302ca"
     },
     "server.R": {
       "checksum": "abdd0f50c24f2557e68eff12e4e668d9"
