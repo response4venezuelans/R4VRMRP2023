@@ -4,8 +4,8 @@
 read_data_2023 <- function(data)
 { 
 
-# Credentials located in seperate file
-source("R/ai_credentials.R")
+
+  activityinfo::activityInfoToken(Sys.getenv("TOKEN_AI"))
 
 # Get data from different sources
 
